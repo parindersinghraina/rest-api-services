@@ -15,7 +15,8 @@
     	        }
             }
           	stage ('Deploy') {
-                sh ""
+                sh "chmod -R 777 build/libs"
+                sh "java -jar build/libs/rest-api-services-0.0.1-SNAPSHOT.jar"
           	}
         } catch (err) {
             currentBuild.result = 'FAILED'
