@@ -14,9 +14,8 @@ pipeline {
             stage('Run Service') {
                 steps {
                     script {
-                        
+
                     }
                 }
             }
     }
-}
