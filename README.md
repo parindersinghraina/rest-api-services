@@ -13,14 +13,14 @@ In order to run this container you'll need docker installed.
 
 #####Build:
 
-`gradlew clean build`
+`./gradlew clean build`
 
 #####Containerize:
 
-`docker build --build-arg JAR_FILE=build/libs/\*.jar -t REST/rest-api-services .
+`docker build --build-arg JAR_FILE=build/libs/\*.jar -t rest/rest-api-services .
 `
 
 #####Push:
 
-`docker run -p 8080:8080 -t REST/rest-api-services
+`docker run -p 8080:8080 -t rest/rest-api-services
 `
