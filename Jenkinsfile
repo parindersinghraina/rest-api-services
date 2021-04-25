@@ -7,7 +7,7 @@
             	checkout scm
             }
             stage ('Database Container') {
-                sh "docker run --platform linux/amd64 -d -p 6033:3306 --name=docker-mysql --env="MYSQL_ROOT_PASSWORD=root" --env="MYSQL_PASSWORD=root" --env="MYSQL_DATABASE=rest_api_services_db" mysql"
+                sh "docker run --platform linux/amd64 -d -p 6033:3306 --name=docker-mysql --env='MYSQL_ROOT_PASSWORD=root' --env='MYSQL_PASSWORD=root' --env="MYSQL_DATABASE=rest_api_services_db' mysql"
                 sh "chmod -R 777 src/main/java/com/parinder/restapiservice"
                 sh "cd src/main/java/com/parinder/restapiservice/sql/"
                 sh "ls -a"
