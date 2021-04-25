@@ -14,7 +14,7 @@
             }
             stage ('Build') {
             	sh "./gradlew clean build"
-            	sh "docker build --build-arg JAR_FILE=build/libs/\*.jar -t rest/rest-api-services ."
+            	sh "docker build --build-arg JAR_FILE=build/libs/*.jar -t rest/rest-api-services ."
             }
           	stage ('Deploy') {
                 sh "ls -a"
