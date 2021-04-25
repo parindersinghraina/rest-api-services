@@ -1,7 +1,7 @@
-    node {
-     	// Clean workspace before doing anything
-        deleteDir()
-
+    pipeline {
+        agent {
+            docker { image 'node:14-alpine' }
+        }
         try {
             stage ('Clone') {
             	checkout scm
