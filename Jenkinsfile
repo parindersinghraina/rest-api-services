@@ -3,8 +3,10 @@ pipeline {
         docker { image 'node:14-alpine' }
     }
     stages {
-        stage('Clone') {
-            checkout scm
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
         }
     }
 }
