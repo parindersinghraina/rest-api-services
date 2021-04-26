@@ -1,10 +1,12 @@
 pipeline {
-    agent { dockerfile true }
+    agent none
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                sh 'node --version'
+                echo 'Building Project'
+                sh "./gradlew clean build"
             }
+        agent { dockerfile true }
         }
     }
 }
