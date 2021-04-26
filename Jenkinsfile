@@ -6,7 +6,12 @@ pipeline {
                 echo 'Building Project'
                 sh "./gradlew clean build"
             }
-        agent { dockerfile true }
         }
+       stage('Deploy') {
+            agent { dockerfile true }
+            steps {
+                echo 'Deploy'
+            }
+       }
     }
 }
