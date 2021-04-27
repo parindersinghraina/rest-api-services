@@ -25,10 +25,10 @@ jar {
     from('src') {
         include '**/*.java', '**/*.xml', '**/*.properties', '**/*.json'
     }
-//    from {
-//        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-//        configurations.compileClasspath.filter { it.exists() }.collect { it.isDirectory() ? it : zipTree(it) }
-//    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.compileClasspath.filter { it.exists() }.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 dependencies {
