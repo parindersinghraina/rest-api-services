@@ -1,18 +1,15 @@
 pipeline {
     agent none
     stages {
-        stage('Build') {
-            agent { docker 'adoptopenjdk/openjdk11:ubi' }
-            steps {
-                echo 'Building Project'
-                sh "./gradlew clean build"
-            }
-        }
-       stage('Deploy') {
+        stage('Build & Deploy') {
             agent { dockerfile true }
             steps {
-                echo 'Deploy'
+                echo 'Project Build'
+                echo 'Create Container'
+                sh "docker build -f Dockerfile -t rest_api_services_app ."
+                sh "docker run -t --link docker-mysql:mysql -p 10222:10222 rest_api_services_app"
+                sh "docker container rm $(docker container ls –aq)"
             }
-       }
+        }
     }
 }
