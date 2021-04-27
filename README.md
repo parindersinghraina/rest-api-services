@@ -22,8 +22,9 @@ In order to run this container you'll need docker installed.
 ####MySQL image is pulled and running as a container. To check this, we can run docker image ls and docker container ls commands.
 
 
-`docker run --platform linux/amd64 -d -p 6033:3306 --name=docker-mysql --env="MYSQL_ROOT_PASSWORD=root" --env="MYSQL_PASSWORD=root" --env="MYSQL_DATABASE=rest_api_services_db" mysql
-`
+`docker run --platform linux/amd64 -d -p 6033:3306 --name=docker-mysql --env="MYSQL_ROOT_PASSWORD=root" --env="MYSQL_PASSWORD=root" --env="MYSQL_DATABASE=rest_api_services_db" mysql`
+
+
 ####Now we have to import the database script to the Docker MySQL database. The SQL script is available /src/main/java/com/parinder/restapiservices. Run the following command to import this script to docker-mysql.
 
 
