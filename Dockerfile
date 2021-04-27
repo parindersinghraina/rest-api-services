@@ -8,6 +8,7 @@ USER root
 RUN chown -R gradle /home/gradle/src
 RUN gradle clean build
 
+ARG JAR_FILE=build/libs/*.jar
 EXPOSE 10222
-ADD /build/libs/rest-api-services-0.0.1-SNAPSHOT.jar rest-api-services-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java","-jar","rest-api-services-0.0.1-SNAPSHOT.jar"]
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
