@@ -7,3 +7,7 @@ COPY --chown=gradle:gradle . /home/gradle/src
 USER root
 RUN chown -R gradle /home/gradle/src
 RUN gradle clean build
+
+EXPOSE 10222
+ADD /build/libs/rest-api-services-0.0.1-SNAPSHOT.jar rest-api-services-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar","rest-api-services-0.0.1-SNAPSHOT.jar"]
