@@ -7,19 +7,25 @@
 
 
 # temp container to build using gradle
-FROM gradle:5.3.0-jdk-alpine AS TEMP_BUILD_IMAGE
-ENV APP_HOME=/Users/parindersingh/.jenkins/workspace/rest-api-services_master
-WORKDIR $APP_HOME
-COPY build.gradle settings.gradle $APP_HOME
-
-COPY gradle $APP_HOME/gradle
+FROM gradle:5.3.0-jdk-alpine AS build
 COPY --chown=gradle:gradle . /home/gradle/src
-USER root
-RUN chown -R gradle /home/gradle/src
+WORKDIR /home/gradle/src
+RUN gradle build --no-daemon
 
-RUN gradle build || return 0
-COPY . .
-RUN gradle clean build
+
+#FROM gradle:5.3.0-jdk-alpine AS TEMP_BUILD_IMAGE
+#ENV APP_HOME=/Users/parindersingh/.jenkins/workspace/rest-api-services_master
+#WORKDIR $APP_HOME
+#COPY build.gradle settings.gradle $APP_HOME
+#
+#COPY gradle $APP_HOME/gradle
+#COPY --chown=gradle:gradle . /home/gradle/src
+#USER root
+#RUN chown -R gradle /home/gradle/src
+#
+#RUN gradle build || return 0
+#COPY . .
+#RUN gradle clean build
 
 # actual container
 #FROM adoptopenjdk/openjdk11:ubi
