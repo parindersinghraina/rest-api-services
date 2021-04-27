@@ -1,12 +1,15 @@
 pipeline {
-    agent {dockerfile true}
+    agent none
     stages {
-        stage('Database Setup') {
+        stage('Build') {
+            agent { docker 'adoptopenjdk/openjdk11:ubi' }
             steps {
-                echo 'Database Setup'
-                }
+                echo 'Building Project'
+                sh "./gradlew clean build"
+            }
         }
        stage('Deploy') {
+            agent { dockerfile true }
             steps {
                 echo 'Deploy'
             }
