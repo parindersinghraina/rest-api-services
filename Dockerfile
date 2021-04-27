@@ -17,9 +17,10 @@ COPY --chown=gradle:gradle . /home/gradle/src
 USER root
 RUN chown -R gradle /home/gradle/src
 
-RUN gradle build || return 0
-COPY . .
 RUN gradle clean build
+#RUN gradle build || return 0
+#COPY . .
+#RUN gradle clean build
 
 # actual container
 #FROM adoptopenjdk/openjdk11:ubi
