@@ -8,7 +8,7 @@
 
 # temp container to build using gradle
 FROM gradle:5.3.0-jdk-alpine AS TEMP_BUILD_IMAGE
-ENV APP_HOME=/usr/app/
+ENV APP_HOME=/Users/parindersingh/.jenkins/workspace/rest-api-services_master
 WORKDIR $APP_HOME
 COPY build.gradle settings.gradle $APP_HOME
 
