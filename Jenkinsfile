@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Build') {
-            agent { docker adoptopenjdk/openjdk11:ubi }
+            agent { docker 'adoptopenjdk/openjdk11:ubi' }
             steps {
                 echo 'Project Build'
                 sh "./gradlew clean build"
