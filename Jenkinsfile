@@ -8,7 +8,7 @@ pipeline {
                 sh "./gradlew clean build"
             }
         }
-        stage('Build & Deploy') {
+        stage('Deploy') {
              agent { dockerfile true }
              steps {
                   echo 'Create Container'
