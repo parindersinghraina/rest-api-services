@@ -1,5 +1,19 @@
 pipeline {
     agent none
+    parameters {
+            string(
+              name: 'USERS',
+              defaultValue: '10',
+              description: 'Number of USERS to target.')
+            string(
+              name: 'HATCH-RATE',
+              defaultValue: '1',
+              description: 'HATCH-RATE to target.')
+            string(
+              name: 'HOST',
+              defaultValue: 'http://localhost:',
+              description: 'HOST to target.')
+        }
     stages {
         stage('Build') {
             agent { docker 'adoptopenjdk/openjdk11:ubi' }
