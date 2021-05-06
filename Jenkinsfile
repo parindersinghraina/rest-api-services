@@ -13,7 +13,12 @@ pipeline {
               name: 'HOST',
               defaultValue: 'http://localhost:',
               description: 'HOST to target.')
-        }
+    }
+    environment {
+           USERS = "${params.USERS}"
+           HATCH_RATE = "${params.HATCH-RATE}"
+           HOST = "${params.HOST}"
+    }
     stages {
         stage('Build') {
             agent { docker 'adoptopenjdk/openjdk11:ubi' }

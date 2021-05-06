@@ -15,7 +15,15 @@
 #  && tar xzvf docker-17.04.0-ce.tgz \
 #  && mv docker/docker /usr/local/bin \
 #  && rm -r docker docker-17.04.0-ce.tgz
-
+#---------
+#FROM adoptopenjdk/openjdk11:ubi
+#ARG JAR_FILE=build/libs/*.jar
+#EXPOSE 10222
+#COPY ${JAR_FILE} app.jar
+#ENTRYPOINT ["java","-jar","/app.jar"]
+#-------------
+#COPY /build/libs/rest-api-services-0.0.1-SNAPSHOT.jar rest-api-services-0.0.1-SNAPSHOT.jar
+#ENTRYPOINT ["java","-jar","rest-api-services-0.0.1-SNAPSHOT.jar"]
 
 FROM adoptopenjdk/openjdk11:ubi
 ARG JAR_FILE=build/libs/*.jar
