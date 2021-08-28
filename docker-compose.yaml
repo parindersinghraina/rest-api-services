@@ -14,15 +14,9 @@ services:
       - ./sql:/docker-entrypoint-initdb.d
     ports:
       - "6033:3306"
+    command: bash -c "ls -a"
     healthcheck:
       test: "/usr/bin/mysql --user=root --password=root--execute \"SHOW DATABASES;\""
       interval: 2s
       timeout: 20s
       retries: 10
-
-  rest_api_services_app:
-    image: gradle:7.0.0-jdk11
-    working_dir: .
-    command: "pwd"
-    depends_on:
-      - mysql_db
