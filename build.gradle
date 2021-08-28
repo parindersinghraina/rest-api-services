@@ -15,6 +15,7 @@ repositories {
 
 jar {
     manifest {
+        apply plugin: 'application'
         attributes 'Main-Class': 'com.parinder.restapiservice.Application'
     }
 }
