@@ -1,15 +1,10 @@
 pipeline {
-    agent dockerfile
-    stages {
-        stage('Build') {
-            steps {
-                script {
-                    echo '********************** Project Build ************************'
-                    sh './gradlew clean build'
-                    sh 'docker run --platform linux/amd64 -d -p 6033:3306 --name=docker-mysql --env="MYSQL_ROOT_PASSWORD=root" --env="MYSQL_PASSWORD=root" --env="MYSQL_DATABASE=rest_api_services_db" mysql'
-                    }
-            }
+    agent {
+        dockerfile {
+            filename 'Dockerfile.ci'
         }
+    }
+    stages {
         stage('Container Setup') {
             steps {
                 container('docker-mysql') {
