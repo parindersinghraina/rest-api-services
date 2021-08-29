@@ -56,7 +56,7 @@
 
 
 #_________test_______
-FROM gradle:5.6.4-jdk11 AS Build
+FROM gradle:7.0.0-jdk11 AS Build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle build --no-daemon
