@@ -1,0 +1,7 @@
+<suite name="api-test" verbose="1" parallel="methods" thread-count="1">
+    <test name="api-test">
+        <packages>
+            <package name="com.parinder.restapiservice.tests.*"/>
+        </packages>
+    </test>
+</suite>
